@@ -109,7 +109,7 @@ t1 = t0;
 keyCode = NaN;
 
 %VOICEKEY
-record(Cfg.Audio.recorder, timeout);       %RECORD for two seconds
+recordblocking(Cfg.Audio.recorder, timeout);       %RECORD for two seconds
 %MAKE SURE WE ARE NOT RECORDING ANYMORE
 while(isrecording(Cfg.Audio.recorder))
 end
