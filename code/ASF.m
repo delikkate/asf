@@ -489,11 +489,11 @@ Cfg.currentTrialNumber = 0;
         if nResponses == 0
             fprintf(1, 'RT: %4d ms, KEY: %4d, CORRECT: %4d\n',...
                 fix(TrialInfo(i).Response.RT), TrialInfo(i).Response.key, trial(i).correctResponse);
-        else
-            for iResponse = 1:nResponses
-                fprintf(1, 'RT: %4d ms, KEY: %4d, CORRECT: %4d\n',...
-                    fix(TrialInfo(i).Response.RT(iResponse)), TrialInfo(i).Response.key(iResponse), trial(i).correctResponse);
-            end
+%         else
+%             for iResponse = 1:nResponses
+%                 fprintf(1, 'RT: %4d ms, KEY: %4d, CORRECT: %4d\n',...
+%                     fix(TrialInfo(i).Response.RT(iResponse)), TrialInfo(i).Response.key(iResponse), trial(i).correctResponse);
+%             end
         end
         
         if Cfg.onlineFeedback
