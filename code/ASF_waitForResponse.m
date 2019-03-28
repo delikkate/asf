@@ -122,7 +122,7 @@ t = (0:length(audioarray)-1)./Cfg.Audio.f;
 audioarray_stimlocked = audioarray(t >= startstim);
 t2 =    (0:length(audioarray_stimlocked)-1)./Cfg.Audio.f;
 fprintf(1, 'Writing %s ... ', this_response.wavname);
-wavwrite(audioarray_stimlocked, Cfg.Audio.f, Cfg.Audio.nBits, this_response.wavname);
+audiowrite(this_response.wavname, audioarray_stimlocked, Cfg.Audio.f, 'BitsPerSample', Cfg.Audio.nBits);
 fprintf(1, 'Done.\n');
 
 %rt = handle_audio_data(audioarray, Cfg.Audio, 0, this_response.wavname, Cfg.plotVOT)*1000;
@@ -139,7 +139,7 @@ t = (0:length(audioarray)-1)./cfg_audio.f;
 audioarray_stimlocked = audioarray(t >= startstim);
 t2 =    (0:length(audioarray_stimlocked)-1)./cfg_audio.f;
 
-wavwrite(audioarray_stimlocked, cfg_audio.f, cfg_audio.nBits, wavname);
+audiowrite(wavname, audioarray_stimlocked, cfg_audio.f, 'BitsPerSample', cfg_audio.nBits);
 cfg.fnames = wavname;
 rt = get_rts(cfg);
 
@@ -191,7 +191,7 @@ for i = 1:nFiles
     end
     fname = d(i).name;
     %    [y, fs, nbits, opts] =   wavread(fname, [22050, 88000]);
-    [y, fs, nbits, opts] =   wavread(fname); %#ok<ASGLU>
+    [y, fs] = audioread(fname);
 
     t = (0:length(y)-1)/fs;
     
